@@ -1,0 +1,37 @@
+p, admin, /auth/register, POST
+p, admin, /auth/login, POST
+p, admin, /auth/refresh, POST
+
+p, admin, /medals/ranking, GET
+p, admin, /medals, POST
+p, admin, /medals/:id, PUT
+p, admin, /medals/:id, DELETE
+
+p, admin, /events, GET
+p, admin, /events/:id, GET
+p, admin, /events, POST
+p, admin, /events/:id, PUT
+p, admin, /events/:id, DELETE
+
+p, admin, /athletes, GET
+p, admin, /athletes/:id, GET
+p, admin, /athletes, POST
+p, admin, /athletes/:id, PUT
+p, admin, /athletes/:id, DELETE
+
+p, admin, /live/:eventId, GET
+p, admin, /live/:eventId, POST
+
+p, user, /auth/register, POST
+p, user, /auth/login, POST
+p, user, /auth/refresh, POST
+
+p, user, /medals/ranking, GET
+
+p, user, /events, GET
+p, user, /events/:id, GET
+
+p, user, /athletes, GET
+p, user, /athletes/:id, GET
+
+p, user, /live/:eventId, GET

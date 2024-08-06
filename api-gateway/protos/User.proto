@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+option go_package = "./genproto/user";
+
+service UserService {
+    rpc Register(CreateUserRequest) returns (CreateUserResponse){}
+    rpc Login(LoginRequest) returns (LoginResponse){}
+    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {}
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+    rpc GetUserById(GetUserRequest) returns (GetUserResponse) {}
+    rpc GetUsers(Void) returns (GetUsersResponse) {}
+    rpc GetUserByFilter(UserFilter) returns (GetUsersResponse) {}
+}
+
+message RefreshTokenRequest {
+    string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+    bool success = 1;
+    string message = 2;
+    string access_token = 3; // Yangi JWT access token
+    string refresh_token = 4; // Yangi JWT refresh token (agar kerak bo'lsa)
+}
+
+message User {
+    string id = 1;
+    string username = 2;
+    string role = 3;
+    string password = 4;
+    string created_at = 5; 
+    string updated_at = 6; 
+    int64 deleted_at = 7;  
+}
+
+message CreateUserRequest {
+    string username = 1;
+    string password = 2;
+    string role = 3;
+}
+
+message CreateUserResponse {
+    bool success = 1;
+    string message = 2;
+    User user = 3;
+}
+
+message UpdateUserRequest {
+    User user = 1;
+}
+
+message UpdateUserResponse {
+    bool success = 1;
+    string message = 2;
+    User user = 3;
+}
+
+message DeleteUserRequest {
+    string id = 1;
+}
+
+message DeleteUserResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse {
+    bool success = 1;
+    string message = 2;
+    User user = 3;
+}
+
+message GetUsersResponse {
+    bool success = 1;
+    string message = 2;
+    repeated User users = 3;
+}
+
+message Void {}
+
+message UserFilter {
+    string username = 1;
+    string password = 2;
+    string role = 3;
+}
+
+message LoginRequest{
+    string username = 1;
+    string password = 2;
+}
+message LoginResponse{
+    bool success = 1;
+    string message = 2;
+    User user = 3; // Foydalanuvchi ma'lumotlari
+    string access_token = 4; // JWT access token
+    string refresh_token = 5; // JWT refresh token
+}
