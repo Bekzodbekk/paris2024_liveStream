@@ -3,10 +3,11 @@ package pkg
 import (
 	"fmt"
 	"medal-service/config"
-	
-	pb "github.com/Bekzodbekk/protofiles/genproto/medals"
+
 	"medal-service/internal/service"
 	"net"
+
+	pb "github.com/Bekzodbekk/protofiles/genproto/medals"
 
 	"google.golang.org/grpc"
 )
